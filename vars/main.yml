@@ -1,0 +1,21 @@
+---
+checksum:
+  kubevirt:
+    v1.2.0:
+      kubevirt-operator.yaml: "sha512:0115ac86b3eea970693926b33690d7dcecca1ded\
+        68fd4b729f9b2de8b0320f41a3dbb3ee2eae74139349c2b9ff45c58d2b2e891238b43c\
+        abb4e23af4fc192ccb"
+      kubevirt-cr.yaml: "sha512:09b99fe4092a98c7fd5d592b882eb07a000ab7a70b3d7c\
+        d22136ed0582a49f20cae125e2068324346bb06d80c3da11107237fdee39e9c93983ab\
+        6871fb5caccb"
+      virtctl: "sha512:306cecc939be054b04faa913a3af7969e1f7504ea4e72b725eaa301\
+        2aa2d096106ec77363eafddb487b6c554cf39dee425810ce694212fe92b5853b8a3daa\
+        f5a"
+  cdi:
+    v1.59.0:
+      cdi-operator.yaml: "sha512:18fbf34c90168c39862c53a9d8901eca47fd46bc03904\
+        6e2a82f26bce4603faa0aaf47d904ff4f1dd93623a93698876ca2dbd6de62879d3efeb\
+        ca1d9615a79ae"
+      cdi-cr.yaml: "sha512:49ee3d75236d7e3d1bdaffce98d38f0536be6b61f87a1d3093e\
+        70ef41405e0dfd4d99b7e78cbb1e0719bd02a6925a5e7eca98066001d0561acfb81296\
+        a1448f1"

@@ -1,0 +1,68 @@
+---
+- name: Download kubevirt-operator.yaml
+  ansible.builtin.get_url:
+    url: "https://github.com/kubevirt/kubevirt/releases/download/\
+      {{ kubevirt_version }}/kubevirt-operator.yaml"
+    dest: ~/kubevirt-operator.yaml
+    checksum: "{{
+      checksum['kubevirt'][kubevirt_version]['kubevirt-operator.yaml']
+      }}"
+    mode: '0600'
+
+- name: Apply kubevirt-operator.yaml
+  kubernetes.core.k8s:
+    state: present
+    src: ~/kubevirt-operator.yaml
+
+- name: Download kubevirt-cr.yaml
+  ansible.builtin.get_url:
+    url: "https://github.com/kubevirt/kubevirt/releases/download/\
+      {{ kubevirt_version }}/kubevirt-cr.yaml"
+    dest: ~/kubevirt-cr.yaml
+    checksum: "{{
+      checksum['kubevirt'][kubevirt_version]['kubevirt-cr.yaml']
+      }}"
+    mode: '0600'
+
+- name: Apply kubevirt-cr.yaml
+  kubernetes.core.k8s:
+    state: present
+    src: ~/kubevirt-cr.yaml
+
+- name: Download virtctl
+  become: true
+  become_user: root
+  ansible.builtin.get_url:
+    url: "https://github.com/kubevirt/kubevirt/releases/download/\
+      {{ kubevirt_version }}/virtctl-{{ kubevirt_version }}-linux-amd64"
+    dest: /usr/bin/virtctl
+    checksum: "{{ checksum['kubevirt'][kubevirt_version]['virtctl'] }}"
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Download cdi-operator.yaml
+  ansible.builtin.get_url:
+    url: "https://github.com/kubevirt/containerized-data-importer/releases/\
+      download/{{ cdi_version }}/cdi-operator.yaml"
+    dest: ~/cdi-operator.yaml
+    checksum: "{{ checksum['cdi'][cdi_version]['cdi-operator.yaml'] }}"
+    mode: '0600'
+
+- name: Apply cdi-operator.yaml
+  kubernetes.core.k8s:
+    state: present
+    src: ~/cdi-operator.yaml
+
+- name: Download cdi-cr.yaml
+  ansible.builtin.get_url:
+    url: "https://github.com/kubevirt/containerized-data-importer/releases/\
+      download/{{ cdi_version }}/cdi-cr.yaml"
+    dest: ~/cdi-cr.yaml
+    checksum: "{{ checksum['cdi'][cdi_version]['cdi-cr.yaml'] }}"
+    mode: '0600'
+
+- name: Apply cdi-cr.yaml
+  kubernetes.core.k8s:
+    state: present
+    src: ~/cdi-cr.yaml
